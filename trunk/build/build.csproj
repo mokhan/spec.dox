@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C1D81CE-3081-4DB6-98FE-DB2BCB0D9C53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>build</RootNamespace>
+    <AssemblyName>build</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat" />
+    <None Include="config\app.config.template" />
+    <None Include="config\log4net.config.xml.template" />
+    <None Include="lib\test\mbunit\Gallio.MbUnit2Adapter.plugin" />
+    <None Include="local.Properties.template" />
+    <None Include="project.build" />
+    <None Include="project.test.build" />
+    <None Include="tools\gallio\Gallio.Echo.exe.config" />
+    <None Include="tools\gallio\Gallio.Host.exe.config" />
+    <None Include="tools\gallio\Gallio.Icarus.exe.config" />
+    <None Include="tools\gallio\Gallio.plugin" />
+    <None Include="tools\gallio\MbUnit.plugin" />
+    <None Include="tools\gallio\Reports\Gallio.Reports.plugin" />
+    <None Include="tools\nant\NAnt.exe.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\test\mbunit\Gallio.MbUnit2Adapter.dll" />
+    <Content Include="lib\test\mbunit\MbUnit.Framework.2.0.dll" />
+    <Content Include="lib\test\mbunit\MbUnit.Framework.2.0.xml" />
+    <Content Include="lib\test\mbunit\MbUnit.Framework.dll" />
+    <Content Include="lib\test\mbunit\MbUnit.Framework.xml" />
+    <Content Include="lib\test\mbunit\QuickGraph.Algorithms.dll" />
+    <Content Include="lib\test\mbunit\QuickGraph.Algorithms.xml" />
+    <Content Include="lib\test\mbunit\QuickGraph.dll" />
+    <Content Include="lib\test\mbunit\QuickGraph.xml" />
+    <Content Include="lib\test\mbunit\Readme.txt" />
+    <Content Include="lib\test\mbunit\Refly.dll" />
+    <Content Include="lib\test\mbunit\Refly.xml" />
+    <Content Include="lib\test\mbunit\TestFu.dll" />
+    <Content Include="lib\test\mbunit\TestFu.xml" />
+    <Content Include="lib\test\rhino.mocks\Rhino.Mocks.dll" />
+    <Content Include="lib\test\rhino.mocks\Rhino.Mocks.xml" />
+    <Content Include="local.properties.xml" />
+    <Content Include="tools\gallio\Aga.Controls.dll" />
+    <Content Include="tools\gallio\Gallio.dll" />
+    <Content Include="tools\gallio\Gallio.Echo.exe" />
+    <Content Include="tools\gallio\Gallio.Host.exe" />
+    <Content Include="tools\gallio\Gallio.Icarus.exe" />
+    <Content Include="tools\gallio\Gallio.Loader.dll" />
+    <Content Include="tools\gallio\Gallio.MSBuildTasks.dll" />
+    <Content Include="tools\gallio\Gallio.MSBuildTasks.xml" />
+    <Content Include="tools\gallio\Gallio.NAntTasks.dll" />
+    <Content Include="tools\gallio\Gallio.NAntTasks.xml" />
+    <Content Include="tools\gallio\Gallio.pdb" />
+    <Content Include="tools\gallio\Gallio.PowerShellCommands.dll" />
+    <Content Include="tools\gallio\Gallio.PowerShellCommands.dll-Help.xml" />
+    <Content Include="tools\gallio\Gallio.PowerShellCommands.xml" />
+    <Content Include="tools\gallio\Gallio.TDNetRunner.dll" />
+    <Content Include="tools\gallio\Gallio.xml" />
+    <Content Include="tools\gallio\Gallio.XmlSerializers.dll" />
+    <Content Include="tools\gallio\ICSharpCode.TextEditor.dll" />
+    <Content Include="tools\gallio\MbUnit.dll" />
+    <Content Include="tools\gallio\MbUnit.pdb" />
+    <Content Include="tools\gallio\MbUnit.Pex.dll" />
+    <Content Include="tools\gallio\MbUnit.xml" />
+    <Content Include="tools\gallio\Reports\css\Gallio-Report.css" />
+    <Content Include="tools\gallio\Reports\Gallio.Reports.dll" />
+    <Content Include="tools\gallio\Reports\img\Container.png" />
+    <Content Include="tools\gallio\Reports\img\Failed.gif" />
+    <Content Include="tools\gallio\Reports\img\Fixture.png" />
+    <Content Include="tools\gallio\Reports\img\FullStop.gif" />
+    <Content Include="tools\gallio\Reports\img\GallioTestReportHeader.png" />
+    <Content Include="tools\gallio\Reports\img\header-background.gif" />
+    <Content Include="tools\gallio\Reports\img\Ignored.gif" />
+    <Content Include="tools\gallio\Reports\img\Logo.png" />
+    <Content Include="tools\gallio\Reports\img\Minus.gif" />
+    <Content Include="tools\gallio\Reports\img\Passed.gif" />
+    <Content Include="tools\gallio\Reports\img\Plus.gif" />
+    <Content Include="tools\gallio\Reports\img\Test.png" />
+    <Content Include="tools\gallio\Reports\js\Gallio-Report.js" />
+    <Content Include="tools\gallio\Reports\Readme.txt" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.ccnet-details-condensed.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.ccnet-details.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.common.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.html+xhtml.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.html-condensed.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.html.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.txt.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.xhtml-condensed.xsl" />
+    <Content Include="tools\gallio\Reports\xsl\Gallio-Report.xhtml.xsl" />
+    <Content Include="tools\gallio\WeifenLuo.WinFormsUI.Docking.dll" />
+    <Content Include="tools\nant\extensions\common\2.0\NAnt.MSBuild.dll" />
+    <Content Include="tools\nant\extensions\common\2.0\NAnt.MSBuild.xml" />
+    <Content Include="tools\nant\lib\common\neutral\ICSharpCode.SharpCvsLib.Console.dll" />
+    <Content Include="tools\nant\lib\common\neutral\ICSharpCode.SharpCvsLib.dll" />
+    <Content Include="tools\nant\lib\common\neutral\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="tools\nant\lib\common\neutral\NUnitCore.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\NDoc.Core.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\NDoc.Documenter.Msdn.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\NDoc.ExtendedUI.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\nunit.core.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\nunit.framework.dll" />
+    <Content Include="tools\nant\lib\mono\1.0\nunit.util.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\NDoc.Core.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\NDoc.Documenter.Msdn.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\NDoc.ExtendedUI.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\nunit.core.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\nunit.framework.dll" />
+    <Content Include="tools\nant\lib\mono\2.0\nunit.util.dll" />
+    <Content Include="tools\nant\lib\net\1.0\NDoc.Core.dll" />
+    <Content Include="tools\nant\lib\net\1.0\NDoc.Documenter.Msdn.dll" />
+    <Content Include="tools\nant\lib\net\1.0\NDoc.ExtendedUI.dll" />
+    <Content Include="tools\nant\lib\net\1.0\nunit.core.dll" />
+    <Content Include="tools\nant\lib\net\1.0\nunit.framework.dll" />
+    <Content Include="tools\nant\lib\net\1.0\nunit.util.dll" />
+    <Content Include="tools\nant\lib\net\1.1\NDoc.Core.dll" />
+    <Content Include="tools\nant\lib\net\1.1\NDoc.Documenter.Msdn.dll" />
+    <Content Include="tools\nant\lib\net\1.1\NDoc.ExtendedUI.dll" />
+    <Content Include="tools\nant\lib\net\1.1\nunit.core.dll" />
+    <Content Include="tools\nant\lib\net\1.1\nunit.framework.dll" />
+    <Content Include="tools\nant\lib\net\1.1\nunit.util.dll" />
+    <Content Include="tools\nant\lib\net\2.0\NDoc.Core.dll" />
+    <Content Include="tools\nant\lib\net\2.0\NDoc.Documenter.Msdn.dll" />
+    <Content Include="tools\nant\lib\net\2.0\NDoc.ExtendedUI.dll" />
+    <Content Include="tools\nant\lib\net\2.0\nunit.core.dll" />
+    <Content Include="tools\nant\lib\net\2.0\nunit.framework.dll" />
+    <Content Include="tools\nant\lib\net\2.0\nunit.util.dll" />
+    <Content Include="tools\nant\log4net.dll" />
+    <Content Include="tools\nant\NAnt.CompressionTasks.dll" />
+    <Content Include="tools\nant\NAnt.CompressionTasks.xml" />
+    <Content Include="tools\nant\NAnt.Core.dll" />
+    <Content Include="tools\nant\NAnt.Core.xml" />
+    <Content Include="tools\nant\NAnt.DotNetTasks.dll" />
+    <Content Include="tools\nant\NAnt.DotNetTasks.xml" />
+    <Content Include="tools\nant\NAnt.exe" />
+    <Content Include="tools\nant\NAnt.MSNetTasks.dll" />
+    <Content Include="tools\nant\NAnt.MSNetTasks.xml" />
+    <Content Include="tools\nant\NAnt.NUnit.dll" />
+    <Content Include="tools\nant\NAnt.NUnit.xml" />
+    <Content Include="tools\nant\NAnt.NUnit1Tasks.dll" />
+    <Content Include="tools\nant\NAnt.NUnit1Tasks.xml" />
+    <Content Include="tools\nant\NAnt.NUnit2Tasks.dll" />
+    <Content Include="tools\nant\NAnt.NUnit2Tasks.xml" />
+    <Content Include="tools\nant\NAnt.SourceControlTasks.dll" />
+    <Content Include="tools\nant\NAnt.SourceControlTasks.xml" />
+    <Content Include="tools\nant\NAnt.VisualCppTasks.dll" />
+    <Content Include="tools\nant\NAnt.VisualCppTasks.xml" />
+    <Content Include="tools\nant\NAnt.VSNetTasks.dll" />
+    <Content Include="tools\nant\NAnt.VSNetTasks.xml" />
+    <Content Include="tools\nant\NAnt.Win32Tasks.dll" />
+    <Content Include="tools\nant\NAnt.Win32Tasks.xml" />
+    <Content Include="tools\nant\NAnt.xml" />
+    <Content Include="tools\nant\NDoc.Documenter.NAnt.dll" />
+    <Content Include="tools\nant\scvs.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\app\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

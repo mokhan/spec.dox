@@ -1,0 +1,80 @@
+<project name="spec.dox" default="run">
+	<property name="nant.settings.currentframework" value="net-3.5" />
+	
+	<property name="base.dir" value="${directory::get-parent-directory( project::get-base-directory() )}" />
+ 	<property name="build.dir" value="${base.dir}\build" />
+	<property name="build.tools.dir" value="${build.dir}\tools" />
+	<property name="build.lib.dir" value="${build.dir}\lib" />
+	<property name="build.compile.dir" value="${build.dir}\compile" />
+	<property name="build.res.dir" value="${build.dir}\res" />
+
+	<property name="product.dir" value="${base.dir}/product" />
+	
+	<property name="name.to.compile.to" value="${project::get-name()}.exe"/>
+
+	<include buildfile="project.test.build"/>
+	<include buildfile="local.properties.xml"/>
+	
+	<target name="clean.up">
+		<exec program="taskkill.exe" commandline="/f /im:notepad.exe /FI &quot;STATUS eq RUNNING&quot;" />		
+		<delete dir="${build.compile.dir}" />
+		<mkdir dir="${build.compile.dir}" />
+	</target>
+	
+	<target name="compile" depends="clean.up">
+		<csc target="exe" output="${build.compile.dir}\${name.to.compile.to}" debug="${debug}" win32icon="${build.res.dir}\mokhan.ico">
+			<sources basedir="${product.dir}">
+				<include name="**\*.cs" />
+				<exclude name="**\AssemblyInfo.cs" />
+				<exclude name="**\*Specs.cs" />
+				<exclude name="${product.dir}\Spec.Dox\Test\**\*.cs" />
+			</sources>
+			<references>
+				<include name="${build.lib.dir}\app\**\*.dll" />
+			</references>
+		</csc>
+	</target>
+
+	<target name="expand.template.file">
+		<copy file="${target}.template" tofile="${target}" overwrite="true" >
+			<filterchain>
+				<replacetokens>
+					<token key="log.level" value="${log.level}" />
+					<token key="debug" value="${debug}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+	</target>
+
+	<target name="copy.dependencies">
+		<copy todir="${build.compile.dir}" flatten="true">
+			<fileset basedir="${build.lib.dir}\app">
+				<include name="**/*.dll" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploy" depends="compile, copy.dependencies">
+		
+	</target>
+
+	<target name="generate.report" depends="deploy">
+		<property name="build.compile.dir" value="${build.compile.dir}\test" />
+		<call target="test.compile" />
+		
+		<property name="build.compile.dir" value="${build.dir}\compile" />
+		<exec 
+			program="${build.compile.dir}\${name.to.compile.to}"
+			commandline="${build.compile.dir}\test\${test.output.dll} TestAttribute" 
+		/>
+	</target>
+
+	<target name="run" depends="generate.report">
+		<echo message="${path.to.browser} ${build.compile.dir}\report.html" />
+		<exec
+			program="${path.to.browser}"
+			commandline="&quot;${build.compile.dir}\report.html&quot;"
+			/>
+	</target>
+
+</project>

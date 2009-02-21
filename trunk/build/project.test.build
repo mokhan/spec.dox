@@ -1,0 +1,44 @@
+<project name="spec.dox">
+
+	<property name="src.test.dir" value="${product.dir}/test" />
+	<property name="test.output.dll" value="${project::get-name()}.dll" />
+	<property name="build.tools.gallio.dir" value="${build.tools.dir}/gallio" />
+	<property name="build.tools.rhino.dir" value="${build.tools.dir}/rhino.mocks" />
+	
+	<target name="test.compile" depends="clean.up, test.copy.dependencies">
+		<csc output="${build.compile.dir}/${test.output.dll}" target="library" debug="true">
+			<sources>
+				<include name="${product.dir}/**/*.cs" />
+				<exclude name="${product.dir}/**/AssemblyInfo.cs" />
+			</sources>
+			<references>
+				<include name="${build.lib.dir}/**.dll" />
+			</references>
+		</csc>
+	</target>
+
+	<target name="test.copy.dependencies">
+		<copy todir="${build.compile.dir}" flatten="true">
+			<fileset basedir="${build.lib.dir}">
+				<include name="**/*.dll" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="run.test" depends="test.compile">
+		<exec
+			program="${build.tools.gallio.dir}/gallio.echo.exe"
+			commandline="${build.compile.dir}/${test.output.dll} /sr /rt:${report.type} /rd:${build.compile.dir}" />			  
+	</target>
+
+	<target name="test" depends="test.compile">
+		<property name="report.type" value="text" />
+		<call target="run.test" />
+	</target>
+	
+	<target name="test.html" depends="test.compile">
+		<property name="report.type" value="html" />
+		<call target="run.test" />
+	</target>
+	
+</project>
