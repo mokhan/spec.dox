@@ -1,0 +1,5 @@
+<project name="spec.dox">
+	<property name="debug" value="true"/>	
+	<property name="path.to.browser" value="c:\program files (x86)\mozilla firefox\firefox.exe"/>	
+	<property name="platform" value="x86" />
+</project>

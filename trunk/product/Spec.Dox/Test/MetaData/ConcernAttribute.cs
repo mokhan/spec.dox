@@ -1,9 +1,12 @@
 using System;
 
-namespace Spec.Dox.Test.MetaData {
+namespace Spec.Dox.Test.MetaData
+{
     [AttributeUsage(AttributeTargets.Class)]
-    public class ConcernAttribute : Attribute {
-        public ConcernAttribute(Type systemUnderTest) {
+    public class ConcernAttribute : Attribute
+    {
+        public ConcernAttribute(Type systemUnderTest)
+        {
             SystemUnderTest = systemUnderTest;
         }
 

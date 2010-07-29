@@ -1,0 +1,7 @@
+[Bb]in
+[Oo]bj
+*.suo
+*.swp
+*.user
+build/compile
+local.properties.xml

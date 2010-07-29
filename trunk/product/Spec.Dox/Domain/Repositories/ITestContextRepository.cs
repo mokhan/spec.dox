@@ -1,31 +1,34 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
-using Spec.Dox.Domain;
 
-namespace Spec.Dox.Domain.Repositories {
-    public interface ITestContextRepository {
-        IEnumerable<ITestContext> All();
+namespace Spec.Dox.Domain.Repositories
+{
+    public interface ITestContextRepository
+    {
+        IEnumerable<ITestContext> All(string path_to_assembly);
     }
 
-    public class TestContextRepository : ITestContextRepository {
-        private readonly Assembly assemblyToInspect;
-        private ITypeContainsSpecifications criteria;
+    public class TestContextRepository : ITestContextRepository
+    {
+        ITypeContainsSpecifications criteria;
+
+        public TestContextRepository() : this(new TypeContainsSpecifications()) {}
 
         public TestContextRepository(ITypeContainsSpecifications criteria)
-            : this(Environment.GetCommandLineArgs()[1], criteria) {}
-
-        public TestContextRepository(string pathToAssembly, ITypeContainsSpecifications criteria) {
-            assemblyToInspect = Assembly.LoadFrom(pathToAssembly);
+        {
             this.criteria = criteria;
         }
 
-        public IEnumerable<ITestContext> All() {
-            foreach (var type in assemblyToInspect.GetTypes()) {
-                if (criteria.IsSatisfiedBy(type)) {
-                    yield return new TestContext(type);
-                }
-            }
+        public IEnumerable<ITestContext> All(string path_to_assembly)
+        {
+            return Assembly
+                .LoadFrom(path_to_assembly)
+                .GetTypes()
+                .Where(type => criteria.IsSatisfiedBy(type))
+                .Select(type => new TestContext(type))
+                .Cast<ITestContext>()
+                ;
         }
     }
 }

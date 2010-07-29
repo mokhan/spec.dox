@@ -22,7 +22,7 @@
 	</target>
 	
 	<target name="compile" depends="clean.up">
-		<csc target="exe" output="${build.compile.dir}\${name.to.compile.to}" debug="${debug}" win32icon="${build.res.dir}\mokhan.ico">
+		<csc target="exe" output="${build.compile.dir}\${name.to.compile.to}" debug="${debug}" win32icon="${build.res.dir}\mokhan.ico" platform="${platform}">
 			<sources basedir="${product.dir}">
 				<include name="**\*.cs" />
 				<exclude name="**\AssemblyInfo.cs" />
@@ -73,7 +73,7 @@
 		<echo message="${path.to.browser} ${build.compile.dir}\report.html" />
 		<exec
 			program="${path.to.browser}"
-			commandline="&quot;${build.compile.dir}\report.html&quot;"
+			commandline="&quot;${build.compile.dir}\test\report.html&quot;"
 			/>
 	</target>
 

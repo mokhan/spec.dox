@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7CD0C4CC-2ADD-47DA-BAB4-277BA79025C0}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,22 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\build\lib\app\castle\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\build\lib\app\castle\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\build\lib\app\castle\Castle.MicroKernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\build\lib\app\castle\Castle.Windsor.dll</HintPath>
-    </Reference>
     <Reference Include="MbUnit.Framework, Version=2.4.2.175, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\build\lib\test\mbunit\MbUnit.Framework.dll</HintPath>
@@ -76,11 +61,6 @@
     <Compile Include="Domain\ITypeContainsSpecifications.cs" />
     <Compile Include="Domain\MethodDecoratedBySpecificationAttributeSpecs.cs" />
     <Compile Include="IConsole.cs" />
-    <Compile Include="Infrastructure\Container\DependencyRegistrySpecs.cs" />
-    <Compile Include="Infrastructure\Container\IContainerFactory.cs" />
-    <Compile Include="Infrastructure\Container\IDependencyRegistry.cs" />
-    <Compile Include="Infrastructure\Container\Resolve.cs" />
-    <Compile Include="Infrastructure\Container\ResolveSpecs.cs" />
     <Compile Include="Presentation\Presenters\IReportPresenter.cs" />
     <Compile Include="Presentation\Presenters\ReportPresenterSpecs.cs" />
     <Compile Include="Program.cs" />

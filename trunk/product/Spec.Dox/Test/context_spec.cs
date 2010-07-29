@@ -1,11 +1,14 @@
 using MbUnit.Framework;
 using Rhino.Mocks;
 
-namespace Spec.Dox.Test {
+namespace Spec.Dox.Test
+{
     [TestFixture]
-    public abstract class context_spec {
+    public abstract class context_spec
+    {
         [SetUp]
-        public void SetUp() {
+        public void SetUp()
+        {
             UnderTheseConditions();
             BecauseOf();
         }
@@ -17,35 +20,41 @@ namespace Spec.Dox.Test {
 
         protected abstract void BecauseOf();
 
-        protected TypeToMock Mock<TypeToMock>() {
+        protected TypeToMock Mock<TypeToMock>() where TypeToMock : class
+        {
             return MockRepository.GenerateMock<TypeToMock>();
         }
 
-        protected TypeToMock Stub<TypeToMock>() {
+        protected TypeToMock Stub<TypeToMock>() where TypeToMock : class
+        {
             return MockRepository.GenerateStub<TypeToMock>();
         }
     }
 
     [TestFixture]
-    public abstract class context_spec<SystemUnderTest> {
+    public abstract class context_spec<SystemUnderTest>
+    {
         [SetUp]
-        public void SetUp() {
-            sut = UnderTheseConditions();
-            BecauseOf();
+        public void SetUp()
+        {
+            sut = EstablishContext();
+            Because();
         }
 
         [TearDown]
         public virtual void Cleanup() {}
 
-        protected abstract SystemUnderTest UnderTheseConditions();
+        protected abstract SystemUnderTest EstablishContext();
 
-        protected abstract void BecauseOf();
+        protected abstract void Because();
 
-        protected TypeToMock Dependency<TypeToMock>() {
+        protected TypeToMock Dependency<TypeToMock>() where TypeToMock : class
+        {
             return MockRepository.GenerateMock<TypeToMock>();
         }
 
-        protected TypeToMock Stub<TypeToMock>() {
+        protected TypeToMock Stub<TypeToMock>() where TypeToMock : class
+        {
             return MockRepository.GenerateStub<TypeToMock>();
         }
 

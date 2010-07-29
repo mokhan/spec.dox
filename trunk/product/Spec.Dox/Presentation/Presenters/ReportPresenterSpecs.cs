@@ -2,60 +2,62 @@ using System.Collections.Generic;
 using MbUnit.Framework;
 using Spec.Dox.Domain;
 using Spec.Dox.Domain.Repositories;
-using Spec.Dox.Presentation.Presenters;
 using Spec.Dox.Presentation.Views;
 using Spec.Dox.Test;
 using Spec.Dox.Test.Extensions;
 using Spec.Dox.Test.MetaData;
 
-namespace Spec.Dox.Presentation.Presenters {
+namespace Spec.Dox.Presentation.Presenters
+{
     public interface ReportPresenterSpecs {}
 
     [Concern(typeof (ReportPresenter))]
-    public class when_initializing_the_report_presenter : context_spec<IReportPresenter> {
-        private ITestContextRepository repository;
-        private ITestContext context;
-        private IHtmlReport view;
-        private IList<ITestSpecification> specifications;
+    public class when_initializing_the_report_presenter : context_spec<IReportPresenter>
+    {
+        ITestContextRepository repository;
+        ITestContext context;
+        IHtmlReport view;
+        IList<ITestSpecification> specifications;
+        string[] args = new[] {"1", "2"};
 
-        protected override IReportPresenter UnderTheseConditions() {
+        protected override IReportPresenter EstablishContext()
+        {
             repository = Dependency<ITestContextRepository>();
             view = Dependency<IHtmlReport>();
             context = Stub<ITestContext>();
             specifications = new List<ITestSpecification>();
 
             repository
-                .setup_result_for(r => r.All())
+                .is_told_to(r => r.All("1"))
                 .Return(new List<ITestContext> {context});
             context
-                .setup_result_for(c => c.AllSpecifications())
+                .is_told_to(c => c.AllSpecifications())
                 .Return(specifications);
 
             return new ReportPresenter(view, repository);
         }
 
-        protected override void BecauseOf() {
-            sut.Initialize();
+        protected override void Because()
+        {
+            sut.Initialize(args);
         }
 
         [Test]
-        public void should_retrieving_all_the_contexts_to_display() {
-            repository.should_have_been_asked_to(r => r.All());
+        public void should_retrieve_each_of_the_specification_that_belong_to_the_context()
+        {
+            context.received(c => c.AllSpecifications());
         }
 
         [Test]
-        public void should_retrieve_each_of_the_specification_that_belong_to_the_context() {
-            context.should_have_been_asked_to(c => c.AllSpecifications());
+        public void should_display_the_specification_for_each_context()
+        {
+            view.received(v => v.Add(context, specifications));
         }
 
         [Test]
-        public void should_display_the_specification_for_each_context() {
-            view.should_have_been_asked_to(v => v.Add(context, specifications));
-        }
-
-        [Test]
-        public void should_generate_the_report() {
-            view.should_have_been_asked_to(v => v.PublishToFinalDestination());
+        public void should_generate_the_report()
+        {
+            view.received(v => v.publish_to_same_folder_as("1"));
         }
     }
 }

@@ -2,13 +2,17 @@ using System;
 using Rhino.Mocks;
 using Rhino.Mocks.Interfaces;
 
-namespace Spec.Dox.Test.Extensions {
-    public static class MockingExtensions {
-        public static void should_have_been_asked_to<T>(this T typeToVerify, Action<T> actionToPerform) {
+namespace Spec.Dox.Test.Extensions
+{
+    static public class MockingExtensions
+    {
+        static public void received<T>(this T typeToVerify, Action<T> actionToPerform)
+        {
             typeToVerify.AssertWasCalled(actionToPerform);
         }
 
-        public static IMethodOptions<R> setup_result_for<T, R>(this T typeToVerify, Func<T, R> actionToPerform) {
+        static public IMethodOptions<R> is_told_to<T, R>(this T typeToVerify, Function<T, R> actionToPerform) where T : class
+        {
             return typeToVerify.Stub(actionToPerform);
         }
     }
